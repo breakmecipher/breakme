@@ -1,0 +1,183 @@
+<div class="container">
+
+  <div class="title">
+    Welcome to {{title}}!
+    <br>
+    Prize pool 50$ (USD)
+  </div>
+
+      <div class="form-group row">
+        <label for="date" class="col-1 col-form-label">Data</label>
+        <div class="col-3 wd">
+          <input type="datetime-local" id="date" class="form-control" [ngModel]="date | date:'yyyy-MM-ddTHH:mm:ss'"
+            (ngModelChange)="setDate($event)">
+          <input type="button" class="btn btn-dark" value="Atualizar" (click)="newDate()">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="date" class="col-1 col-form-label">Passos</label>
+        <div class="col-3">
+          <input type="number" name="step" id="step" step="1" class="form-control" [(ngModel)]="step">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="date" class="col-1 col-form-label">Ciclos</label>
+        <div class="col-3">
+          <input type="number" name="cicles" id="cicles" step="1" class="form-control" [(ngModel)]="cicles">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col">
+          <label>Texto simple: </label>
+
+          <textarea class="form-control" rows="4" cols="50" name="msg" maxlength="500" [(ngModel)]="msg"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3 wd">
+          <input type="button" class="btn btn-dark ml1" value="Cifra" (click)="cipher()">
+        </div>
+        <div class="custom-control custom-checkbox pt5">
+          <input type="checkbox" id="checkbox" class="ml1 custom-control-input" [(ngModel)]="isRandomKey"
+            (click)="setRandomKey($event.target.checked)">
+          <label class="custom-control-label" for="checkbox">Senha aleatória</label>
+        </div>
+      </div>
+
+      <div class="form-group row mt">
+        <label for="message" class="col-2 col-form-label">Texto cifrado (Base64):</label>
+        <input type="text" class="form-control col-9" id="message" name="cipherMsg" [(ngModel)]="cipherMsg">
+      </div>
+
+      <div class="form-group row">
+        <label for="key" class="col-1 col-form-label">Senha:</label>
+        <input type="text" class="form-control col-9" [(ngModel)]="key">
+        <input type="button" value="Decifrar" (click)="decipher(cipherMsg, key)">
+      </div>
+
+      <div class="form-group row mt">
+        <div class="col">
+          {{ obj | json}}
+          <label>Texto decifrado:</label>
+
+          <textarea class="form-control" rows="4" cols="50" name="decipherMsg" maxlength="500"
+            [(ngModel)]="decipherMsg"></textarea>
+        </div>
+      </div>
+
+      <div class="title">
+        BreakMe or UseMe.
+      </div>
+
+      <div class="form-group row mt">
+        <div class="col">
+          <h2>Found out it's impossible to break our cipher?!? Implement and start to user;)</h2>
+        </div>
+      </div>
+
+      <div class="title">
+        BreakMe or PayMe.
+      </div>
+
+      <div class="form-group row mt">
+        <div class="col">
+          <h2>Is it impossible break our block cipher!? Send us 10$ (USD) or more to increse the prize pool :)
+            <a
+              href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9EMLMXL9QHWRW&currency_code=USD&source=url">PayPal</a>
+          </h2>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="form-group row mt">
+        <div class="col">
+          <p><strong>How the cipher works?</strong></p>
+          <p>The whole concept is very simple, let's see an example: First get a set of anything (ex.: the 8 aces cards
+            of
+            two decks).<br />Now you'd like shuffle this cards, so you can do this of two ways: randomly or
+            create<br />a
+            pattern for it. Let's create a pattern!<br />Give a name for each Aces: Ace1, Ace2, Ace3, Ace4, Ace5, Ace6,
+            Ace7, Ace8. Imagine this cards in the table, in a row, and follow the steps:</p>
+          <p><br />1: choose a number between 1 and 8; (4, for example); <br /> // Every number will represent the
+            position
+            of the Ace in the row (the first position is 1).<br />2: remove the card from the position you chose and put
+            it
+            in a new row and note its position;<br /> (Ace1, Ace2, Ace3, Ace5, Ace6, Ace7, Ace8), (4), (Ace4)<br />3:
+            choose
+            a new number between 1 and 7 (because now the main sequence have just 7 cards); (2, for example);<br />4:
+            change
+            the card you chose by the card in the first position and note its position;<br /> (Ace2, Ace1, Ace3, Ace5,
+            Ace6,
+            Ace7, Ace8), (2);<br /> // if the chose number was 1, just note it.<br /> // Back to step 1 until you have
+            half
+            of the cards in the main row.</p>
+          <p>1: choose a number (between 1 and 7) (2);<br />2: (Ace2, Ace3, Ace5, Ace6, Ace7, Ace8), (4, 2), (Ace4,
+            Ace1)<br />3: choose a number (between 1 and 6) (2);<br />4: (Ace3, Ace2, Ace5, Ace6, Ace7, Ace8), (2, 2)
+          </p>
+          <p>1: choose a number (between 1 and 6) (6);<br />2: (Ace3, Ace2, Ace5, Ace6, Ace7), (4, 2, 6), (Ace4, Ace1,
+            Ace8)<br />3: choose a number (between 1 and 5) (4);<br />4: (Ace6, Ace2, Ace5, Ace3, Ace7), (2, 2, 4)</p>
+          <p>1: choose a number (between 1 and 5) (1);<br />2: (Ace2, Ace5, Ace3, Ace7), (4, 2, 6, 1), (Ace4, Ace1,
+            Ace8,
+            Ace6)<br />3: choose a number (between 1 and 4) (3);<br />4: (Ace3, Ace5, Ace2, Ace7), (2, 2, 4, 3);</p>
+          <p>Now put all Aces together follow the sequence you have in the last step 2 and 4: <br /> (Ace3, Ace5, Ace2,
+            Ace7, Ace4, Ace1, Ace8, Ace6); Shuffle! ;)<br /> // Try for example start the process with this new sequence
+            and
+            before ask for a friend find out it</p>
+          <p>&nbsp;</p>
+          <p><span style="text-decoration: underline;">How to discover the initial sequence?</span></p>
+          <p>First you need the actual sequence: <br /> (Ace3, Ace5, Ace2, Ace7, Ace4, Ace1, Ace8, Ace6)<br />Second,
+            know
+            the numbers of the removed and changed positions: <br /> (4, 2, 6, 1) - Removed!<br /> (2, 2, 4, 3) -
+            Changed!
+          </p>
+          <p>Start by split the new sequence in two, to get the same lists you had in the last step 2 and 4:<br /> Part
+            1 -
+            (Ace3, Ace5, Ace2, Ace7)<br /> Part 2 - (Ace4, Ace1, Ace8, Ace6)<br /> // Now you have two lists</p>
+          <p>Now you are ready to discover the sequence! ;)</p>
+          <p>Follow the steps:</p>
+          <p>1: get the last value in the list of changed positions; (3)<br />2: use the list Part 1 and change the card
+            in
+            the position by the first;<br /> (Ace2, Ace5, Ace3, Ace7)<br />3: get the last value in the list of removed
+            positions; (1)<br />4: get the last Ace of Part 2 (Ace6) and insert it in the correlated position inside
+            list
+            Part 1:<br /> (Ace6, Ace2, Ace5, Ace3, Ace7)<br /> // Back to step 1, and continue use the values from the
+            last
+            to first. From the positions notes <br /> // and the list Part 2</p>
+          <p>1: (4)<br />2: (Ace3, Ace2, Ace5, Ace6, Ace7)<br />3: (6), (Ace8)<br />4: (Ace3, Ace2, Ace5, Ace6, Ace7,
+            Ace8)
+          </p>
+          <p>1: (2)<br />2: (Ace2, Ace3, Ace5, Ace6, Ace7, Ace8)<br />3: (2), (Ace1)<br />4: (Ace2, Ace1, Ace3, Ace5,
+            Ace6,
+            Ace7, Ace8)</p>
+          <p>1: (2)<br />2: (Ace1, Ace2, Ace3, Ace5, Ace6, Ace7, Ace8)<br />3: (4), (Ace4)<br />4: (Ace1, Ace2, Ace3,
+            Ace4,
+            Ace5, Ace6, Ace7, Ace8); Done :)</p>
+          <p>Some notes:<br />- You can do the process with other amount of items;<br />- You can use a even number
+            instead
+            an odd;<br />- You can do the process until be possible to remove and change the values or until you
+            went;<br />- If you intent to have different sizes for Part 1 and Part 2 you need to keep this in mind when
+            you
+            do the reverse process.</p>
+          <p>I hope you get the basic idea. (:</p>
+          <p>The BreakMe use a set of 24 binaries (24bits) data to cipher a simple text.<br />Each group of 24bits is
+            cipher
+            with a different key.<br />The ciphered text is encode to Base64. Enter with a Base64 text do be decipher.
+          </p>
+        </div>
+      </div>
+
+      <h1><a href="https://github.com/dandan0092/breakme">Fork me!</a></h1>
+
+
+
+
+
+
+    </div>

@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "breakme",
+    "public": "dist/breakme",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
