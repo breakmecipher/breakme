@@ -8,7 +8,7 @@ import { Component } from '@angular/core'
 
 export class AppComponent {
   title = 'Breakme';
-  msg: string = 'Gaius Julius Caesar, known by his nomen and cognomen Julius Caesar, was a populist Roman dictator, politician, military general, and historian who played a critical role in the events that led to the demise of the Roman Republic and the rise of the Roman Empire. He also wrote Latin prose. Wikipedia.';
+  msg: string = 'Gaius Julius Caesar, known by his nomen and cognomen Julius Caesar, was a populist Roman dictator, politician, military general, and historian who played a critical role in the events that led to the demise of the Roman Republic and the rise of the Roman Empire. He also wrote Latin prose. Wikipedia';
   binaries: string;
   cipherMsg: string;
   decipherMsg: string;
@@ -57,6 +57,7 @@ export class AppComponent {
         binaries.push('01100011');
       }
     }
+    
     return binaries;
   }
 
@@ -284,6 +285,8 @@ export class AppComponent {
 
   decipher(msg: string, key: string) {
     msg = atob(msg);
+    //console.log(msg, key);
+    
     let ir: number[] = this.getKeyDec(key.substr(0, 8));
     let ic: number[] = this.getKeyDec(key.substr(8, 16));
 
@@ -359,6 +362,8 @@ export class AppComponent {
     for (let i = 0; i < hex.length; i++) {
       values[i] = parseInt(hex[i], 16);
     }
+    
+    //console.log(values);
     return values;
   }
 }

@@ -1,183 +1,550 @@
-<div class="container">
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Prêmio atual 50$ (USD)</a>
+    </div>
+  </nav>
+  <!-- Masthead-->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <!-- Masthead Heading-->
+      <h1 class="masthead-heading text-uppercase mb-0">Bem-vindo ao Breakme!</h1>
+      <!-- Icon Divider-->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-core"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+      <!-- Masthead Subheading-->
+      <div class="masthead-subheading font-weight-light mb-0">
+        <h1><span></span></h1>
+        <h1 class="text-center"><span>Breakme ou use-me!</span></h1>
+        <p><span class="fontbm"> Descobriu que &eacute; imposs&iacute;vel quebrar essa cifra de bloco!? Comece a
+            us&aacute;-la!
+            ;)</span></p>
+        <h1 id="h.30j0zll" class="text-center"><span>Breakme ou pague-me!</span></h1>
+        <p><span class="fontbm"> &Eacute; imposs&iacute;vel quebrar essa cifra de bloco? Ent&atilde;o se liga no desafio
+            que
+            vir&aacute; a seguir, no qual poder&aacute; garantir o pr&ecirc;mio atual</span>
+        </p>
+        <p><span></span></p>
+        <p><span class="fontbm">Envie-me 1$ (USD) ou mais para aumentar o pr&eacute;mio. </span><span>
+            <a style="color: blue;"
+              href="https://www.google.com/url?q=https://www.paypal.com/cgi-bin/webscr?cmd%3D_donations%26business%3D9EMLMXL9QHWRW%26currency_code%3DUSD%26source%3Durl&amp;sa=D&amp;ust=1593441643968000&amp;usg=AOvVaw2KvJjLCAls41u-v3_2i9JR">
+              Paypal Doar</a></span>
+        </p>
 
-  <div class="title">
-    Welcome to {{title}}!
-    <br>
-    Prize pool 50$ (USD)
-  </div>
+      </div>
+    </div>
+  </header>
+  <!-- Portfolio Section-->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
 
-      <div class="form-group row">
-        <label for="date" class="col-1 col-form-label">Data</label>
-        <div class="col-3 wd">
-          <input type="datetime-local" id="date" class="form-control" [ngModel]="date | date:'yyyy-MM-ddTHH:mm:ss'"
-            (ngModelChange)="setDate($event)">
-          <input type="button" class="btn btn-dark" value="Atualizar" (click)="newDate()">
+      <div class="widthc">
+
+        <div>
+          <label for="date" class="fonttile">Data</label>
+          <div>
+            <input type="datetime-local" id="date" [ngModel]="date | date:'yyyy-MM-ddTHH:mm:ss'"
+              (ngModelChange)="setDate($event)">
+            <input type="button" value="Nova data" (click)="newDate()">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="date" class="col-1 col-form-label">Passos</label>
-        <div class="col-3">
-          <input type="number" name="step" id="step" step="1" class="form-control" [(ngModel)]="step">
+        <div>
+          <label for="date" class="fonttile">Passos</label>
+          <div>
+            <input type="number" name="step" id="step" step="1" [(ngModel)]="step">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="date" class="col-1 col-form-label">Ciclos</label>
-        <div class="col-3">
-          <input type="number" name="cicles" id="cicles" step="1" class="form-control" [(ngModel)]="cicles">
+        <div>
+          <label for="date" class="fonttile">Ciclos</label>
+          <div>
+            <input type="number" name="cicles" id="cicles" step="1" [(ngModel)]="cicles">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col">
-          <label>Texto simple: </label>
-
-          <textarea class="form-control" rows="4" cols="50" name="msg" maxlength="500" [(ngModel)]="msg"></textarea>
+        <div>
+          <label class="fonttile">Texto simple: </label>
+          <div>
+            <textarea rows="4" cols="50" name="msg" maxlength="299" class="widthf" [(ngModel)]="msg"></textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col-3 wd">
-          <input type="button" class="btn btn-dark ml1" value="Cifra" (click)="cipher()">
+        <div>
+          <input type="button" value="Cifra" class="btc" (click)="cipher()">
+          <input type="checkbox" id="checkbox" [(ngModel)]="isRandomKey" (click)="setRandomKey($event.target.checked)">
+          <label for="checkbox" class="fonttile ml-2">Senha aleatória</label>
         </div>
-        <div class="custom-control custom-checkbox pt5">
-          <input type="checkbox" id="checkbox" class="ml1 custom-control-input" [(ngModel)]="isRandomKey"
-            (click)="setRandomKey($event.target.checked)">
-          <label class="custom-control-label" for="checkbox">Senha aleatória</label>
+
+        <div>
+          <label for="message" class="fonttile">Texto cifrado (Base64):</label>
+          <div>
+            <input type="text" id="message" class="widthf" name="cipherMsg" [(ngModel)]="cipherMsg">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row mt">
-        <label for="message" class="col-2 col-form-label">Texto cifrado (Base64):</label>
-        <input type="text" class="form-control col-9" id="message" name="cipherMsg" [(ngModel)]="cipherMsg">
-      </div>
-
-      <div class="form-group row">
-        <label for="key" class="col-1 col-form-label">Senha:</label>
-        <input type="text" class="form-control col-9" [(ngModel)]="key">
-        <input type="button" value="Decifrar" (click)="decipher(cipherMsg, key)">
-      </div>
-
-      <div class="form-group row mt">
-        <div class="col">
-          {{ obj | json}}
-          <label>Texto decifrado:</label>
-
-          <textarea class="form-control" rows="4" cols="50" name="decipherMsg" maxlength="500"
-            [(ngModel)]="decipherMsg"></textarea>
+        <div class="mt-3">
+          <label for="key" class="fonttile">Senha:</label>
+          <input type="text" [(ngModel)]="key">
+          <input type="button" value="Decifrar" (click)="decipher(cipherMsg, key)">
         </div>
-      </div>
 
-      <div class="title">
-        BreakMe or UseMe.
-      </div>
-
-      <div class="form-group row mt">
-        <div class="col">
-          <h2>Found out it's impossible to break our cipher?!? Implement and start to user;)</h2>
+        <div>
+          <div>
+            <label class="fonttile">Texto decifrado:</label>
+            <div>
+              <textarea rows="4" cols="50" name="decipherMsg" class="widthf" maxlength="500"
+                [(ngModel)]="decipherMsg"></textarea>
+            </div>
+          </div>
         </div>
+
       </div>
-
-      <div class="title">
-        BreakMe or PayMe.
+    </div>
+  </section>
+  <!-- About Section-->
+  <section class="page-section bg-primary text-white mb-0" id="about">
+    <div class="container">
+      <!-- About Section Heading-->
+      <h2 class="page-section-heading text-center text-uppercase text-white">Sobre</h2>
+      <!-- Icon Divider-->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
       </div>
-
-      <div class="form-group row mt">
-        <div class="col">
-          <h2>Is it impossible break our block cipher!? Send us 10$ (USD) or more to increse the prize pool :)
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9EMLMXL9QHWRW&currency_code=USD&source=url">PayPal</a>
-          </h2>
-
-        </div>
-      </div>
-
-
-
-
-      <div class="form-group row mt">
-        <div class="col">
-          <p><strong>How the cipher works?</strong></p>
-          <p>The whole concept is very simple, let's see an example: First get a set of anything (ex.: the 8 aces cards
-            of
-            two decks).<br />Now you'd like shuffle this cards, so you can do this of two ways: randomly or
-            create<br />a
-            pattern for it. Let's create a pattern!<br />Give a name for each Aces: Ace1, Ace2, Ace3, Ace4, Ace5, Ace6,
-            Ace7, Ace8. Imagine this cards in the table, in a row, and follow the steps:</p>
-          <p><br />1: choose a number between 1 and 8; (4, for example); <br /> // Every number will represent the
-            position
-            of the Ace in the row (the first position is 1).<br />2: remove the card from the position you chose and put
-            it
-            in a new row and note its position;<br /> (Ace1, Ace2, Ace3, Ace5, Ace6, Ace7, Ace8), (4), (Ace4)<br />3:
-            choose
-            a new number between 1 and 7 (because now the main sequence have just 7 cards); (2, for example);<br />4:
-            change
-            the card you chose by the card in the first position and note its position;<br /> (Ace2, Ace1, Ace3, Ace5,
-            Ace6,
-            Ace7, Ace8), (2);<br /> // if the chose number was 1, just note it.<br /> // Back to step 1 until you have
-            half
-            of the cards in the main row.</p>
-          <p>1: choose a number (between 1 and 7) (2);<br />2: (Ace2, Ace3, Ace5, Ace6, Ace7, Ace8), (4, 2), (Ace4,
-            Ace1)<br />3: choose a number (between 1 and 6) (2);<br />4: (Ace3, Ace2, Ace5, Ace6, Ace7, Ace8), (2, 2)
+      <!-- About Section Content-->
+      <div class="row bl">
+        <div class="col-lg-12 ml-auto">
+          <h1 class="c24"><span class="c0">Antes, quero te mostrar como essa cifra de bloco funciona, vamos
+              l&aacute;?</span>
+          </h1>
+          <p class="c11"><span class="c3">Primeiro te apresento qual o processo utilizado para embaralhar os dados e, em
+              seguida, como a chave &eacute; definida. </span></p>
+          <h2 class="c32" id="h.3znysh7"><span class="c29 c27 c34">Embaralhando os dados:</span></h2>
+          <p class="c10"><span class="c23"></span></p>
+          <p class="c1"><span class="c3">Para entender melhor utilizaremos como exemplo as cartas de um baralho, certo?
+            </span></p>
+          <p class="c1"><span class="c3">Quando se deseja embaralhar as cartas de um baralho, &eacute; poss&iacute;vel
+              fazer
+              isso de pelo menos duas maneiras diferentes: A primeira pode ser de modo aleat&oacute;rio e, a segunda
+              criando um padr&atilde;o para dispor as cartas. </span></p>
+          <p class="c1"><span class="c3">Tendo isto em vista, para essa cifra de bloco foi pensado um padr&atilde;o
+              simples e
+              bem f&aacute;cil de entender.</span></p>
+          <p class="c1"><span class="c3">Para facilitar o entendimento vamos come&ccedil;ar embaralhando algumas cartas.
+              Utilizaremos como exemplo 8 cartas de baralho, nessa sequ&ecirc;ncia: 7, 8, 9, 10, Valete, Rainha, Rei,
+              &Agrave;s. Cada uma, respectivamente, em sua posi&ccedil;&atilde;o onde a carta 7 est&aacute; na 1&ordm;
+              posi&ccedil;&atilde;o e o &Aacute;s na 8&ordm; posi&ccedil;&atilde;o.</span></p>
+          <p class="c1 c16"><span class="c3"></span></p><a id="t.9a299ac5bfb132591aba460c5417e4dc9ef248fc"></a><a
+            id="t.0"></a>
+          <table class="c7">
+            <tbody>
+              <tr class="c22">
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 105.60px; height: 136.04px;"><img
+                        alt="" src="assets/img/image6.png"
+                        style="width: 105.60px; height: 136.04px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 137.33px;"><img
+                        alt="" src="assets/img/image8.png"
+                        style="width: 107.00px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 137.33px;"><img
+                        alt="" src="assets/img/image2.png"
+                        style="width: 107.00px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 133.33px;"><img
+                        alt="" src="assets/img/image1.png"
+                        style="width: 107.00px; height: 133.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 137.33px;"><img
+                        alt="" src="assets/img/image7.png"
+                        style="width: 107.00px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 137.33px;"><img
+                        alt="" src="assets/img/image3.png"
+                        style="width: 107.00px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 137.33px;"><img
+                        alt="" src="assets/img/image5.png"
+                        style="width: 107.00px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+                <td class="c21" colspan="1" rowspan="1">
+                  <p class="c12"><span
+                      style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 107.00px; height: 137.33px;"><img
+                        alt="" src="assets/img/image4.png"
+                        style="width: 107.00px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title=""></span></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 class="c28" id="h.72biyxaoyahl"><span class="c3">Agora para embaralhar siga os passos abaixo:</span></h3>
+          <p class="c1"><span class="c3">1&ordm;: Escolha um n&uacute;mero entre 1 e 8: (4, por exemplo);</span></p>
+          <p class="c1 c26"><span class="c3">Nota: O n&uacute;mero escolhido ser&aacute; referente &agrave; atual
+              posi&ccedil;&atilde;o da carta na sequ&ecirc;ncia.</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">2&ordm;: Remova a carta da posi&ccedil;&atilde;o correspondente e coloque-a em
+              uma
+              nova sequ&ecirc;ncia;</span></p>
+          <p class="c11 c26"><span class="c14 c27 c39">Sequ&ecirc;ncia principal, depois da carta removida: 7, 8, 9,
+              Valete,
+              Rainha, Rei, &Agrave;s.</span></p>
+          <p class="c11 c4"><span class="c29 c13 c31">Carta removida: 10</span></p>
+          <p class="c11 c4"><span class="c29 c13 c31">Posi&ccedil;&atilde;o da carta removida: 4</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c1"><span class="c17">Nota: As cartas da nova sequ&ecirc;ncia ficam organizadas na ordem que foram
+              removidas. Quando uma carta &eacute; removida a sequ&ecirc;ncia passa a ter uma posi&ccedil;&atilde;o a
+              menos. Ent&atilde;o numere novamente a sequ&ecirc;ncia, partindo sempre da primeira posi&ccedil;&atilde;o.
+              Aqui a carta 7 continua na 1&ordm; posi&ccedil;&atilde;o e o &Aacute;s agora passa para a 7&ordm;
+              posi&ccedil;&atilde;o.</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">3&ordm;: Escolha um novo n&uacute;mero entre 1 e 7 (2, por exemplo)</span></p>
+          <p class="c11"><span class="c3">4&ordm;: Troque a carta da posi&ccedil;&atilde;o escolhida pela carta na
+              primeira
+              posi&ccedil;&atilde;o.</span></p>
+          <p class="c30 c4"><span class="c9">Sequ&ecirc;ncia principal, depois de trocar a carta: 8, 7, 9, Valete,
+              Rainha,
+              Rei, &Agrave;s.</span></p>
+          <p class="c30 c4"><span class="c9">Posi&ccedil;&atilde;o trocada: 2 </span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c35"><span class="c17">Nota: Anote a posi&ccedil;&atilde;o da carta trocada. Se a
+              posi&ccedil;&atilde;o
+              escolhida for a primeira apenas anote o n&uacute;mero sem trocar a carta.</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Repita o primeiro passo at&eacute; ter somente metade das cartas na
+              sequ&ecirc;ncia
+              principal.</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm; e 2&ordm;: Escolha um n&uacute;mero entre 1 e 7 e remova a carta na
+              posi&ccedil;&atilde;o correspondente. (2, por exemplo);</span></p>
+          <p class="c8 c4"><span class="c6">Sequ&ecirc;ncia principal, depois da carta removida: 8, 9, Valete, Rainha,
+              Rei,
+              &Agrave;s</span></p>
+          <p class="c4 c8"><span class="c6">Cartas removidas: 10, 7.</span></p>
+          <p class="c11 c26"><span class="c3">Posi&ccedil;&otilde;es das cartas removidas: 4, 2</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c13">3&ordm; e 4&ordm;: Escolha um n&uacute;mero (entre 1 e 6) e troque a carta da
+              posi&ccedil;&atilde;o escolhida pela carta da primeira posi&ccedil;&atilde;o (2, novamente);</span></p>
+          <p class="c8 c4"><span class="c9">Sequ&ecirc;ncia principal, depois de trocar a carta: 9, 8, Valete, Rainha,
+              Rei,
+              &Agrave;s</span></p>
+          <p class="c8 c4"><span class="c9">Posi&ccedil;&otilde;es trocadas: 2, 2</span></p>
+          <p class="c11"><span
+              class="c3">----------------------------------------------------------------------------------------------------------</span>
           </p>
-          <p>1: choose a number (between 1 and 6) (6);<br />2: (Ace3, Ace2, Ace5, Ace6, Ace7), (4, 2, 6), (Ace4, Ace1,
-            Ace8)<br />3: choose a number (between 1 and 5) (4);<br />4: (Ace6, Ace2, Ace5, Ace3, Ace7), (2, 2, 4)</p>
-          <p>1: choose a number (between 1 and 5) (1);<br />2: (Ace2, Ace5, Ace3, Ace7), (4, 2, 6, 1), (Ace4, Ace1,
-            Ace8,
-            Ace6)<br />3: choose a number (between 1 and 4) (3);<br />4: (Ace3, Ace5, Ace2, Ace7), (2, 2, 4, 3);</p>
-          <p>Now put all Aces together follow the sequence you have in the last step 2 and 4: <br /> (Ace3, Ace5, Ace2,
-            Ace7, Ace4, Ace1, Ace8, Ace6); Shuffle! ;)<br /> // Try for example start the process with this new sequence
-            and
-            before ask for a friend find out it</p>
-          <p>&nbsp;</p>
-          <p><span style="text-decoration: underline;">How to discover the initial sequence?</span></p>
-          <p>First you need the actual sequence: <br /> (Ace3, Ace5, Ace2, Ace7, Ace4, Ace1, Ace8, Ace6)<br />Second,
-            know
-            the numbers of the removed and changed positions: <br /> (4, 2, 6, 1) - Removed!<br /> (2, 2, 4, 3) -
-            Changed!
+          <p class="c11"><span class="c3">CONTINUE...</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm; e 2&ordm;: Escolha um n&uacute;mero entre 1 e 6 e remova (6, por
+              exemplo);</span></p>
+          <p class="c8 c4"><span class="c9">Sequ&ecirc;ncia principal, depois da carta removida: 9, 8, Valete, Rainha,
+              Rei.</span></p>
+          <p class="c8 c4"><span class="c9">Cartas removidas: 10, 7, &Agrave;s</span></p>
+          <p class="c8 c4"><span class="c9">Posi&ccedil;&otilde;es das cartas removidas: 4, 2, 6</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">3&ordm; e 4&ordm;: Escolha um n&uacute;mero entre 1 e 5 e troque (4, por
+              exemplo);</span></p>
+          <p class="c8 c4"><span class="c9">Sequ&ecirc;ncia principal, depois de trocar a carta: Rainha, 8, Valete, 9,
+              Rei.</span></p>
+          <p class="c8 c4"><span class="c9">Posi&ccedil;&otilde;es trocadas: 2, 2, 4</span></p>
+          <p class="c11"><span
+              class="c3">----------------------------------------------------------------------------------------------------------</span>
           </p>
-          <p>Start by split the new sequence in two, to get the same lists you had in the last step 2 and 4:<br /> Part
-            1 -
-            (Ace3, Ace5, Ace2, Ace7)<br /> Part 2 - (Ace4, Ace1, Ace8, Ace6)<br /> // Now you have two lists</p>
-          <p>Now you are ready to discover the sequence! ;)</p>
-          <p>Follow the steps:</p>
-          <p>1: get the last value in the list of changed positions; (3)<br />2: use the list Part 1 and change the card
-            in
-            the position by the first;<br /> (Ace2, Ace5, Ace3, Ace7)<br />3: get the last value in the list of removed
-            positions; (1)<br />4: get the last Ace of Part 2 (Ace6) and insert it in the correlated position inside
-            list
-            Part 1:<br /> (Ace6, Ace2, Ace5, Ace3, Ace7)<br /> // Back to step 1, and continue use the values from the
-            last
-            to first. From the positions notes <br /> // and the list Part 2</p>
-          <p>1: (4)<br />2: (Ace3, Ace2, Ace5, Ace6, Ace7)<br />3: (6), (Ace8)<br />4: (Ace3, Ace2, Ace5, Ace6, Ace7,
-            Ace8)
+          <p class="c11"><span class="c3">E CONTINUE...</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm; e 2&ordm;: Escolha um n&uacute;mero entre 1 e 5 e remova (1, por
+              exemplo);</span></p>
+          <p class="c8 c4"><span class="c9">Sequ&ecirc;ncia principal, depois da carta removida: 8, Valete, 9,
+              Rei.</span></p>
+          <p class="c8 c4"><span class="c9">Cartas removidas: 10, 7, &Agrave;s, Rainha</span></p>
+          <p class="c8 c4"><span class="c9">Posi&ccedil;&otilde;es das cartas removidas: 4, 2, 6, 1</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">3&ordm; e 4&ordm;: Escolha um n&uacute;mero entre 1 e 4 e troque (3, por
+              exemplo);</span></p>
+          <p class="c8 c4"><span class="c9">Sequ&ecirc;ncia principal, depois de trocar a carta: 9, Valete, 8,
+              Rei.</span></p>
+          <p class="c8 c4"><span class="c9">Posi&ccedil;&otilde;es trocadas: 2, 2, 4, 3</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Feito isso junte as cartas do passo 4 com as cartas removidas, como nesse
+              exemplo: 9,
+              Valete, 8, Rei, 10, 7, &Agrave;s, Rainha. Pronto! Cartas embaralhadas! :) </span></p>
+          <p class="c1"><span class="c3">Optei por colocar primeiro as cartas da sequ&ecirc;ncia principal e depois as
+              cartas
+              removidas. O contr&aacute;rio tamb&eacute;m pode ser feito, primeiro as removidas depois a sequ&ecirc;ncia
+              principal, desde que as cartas fiquem agrupadas na mesma ordem. Ok?</span></p>
+          <h3 class="c19" id="h.kckym7o8u3ki"><span class="c27">Como descobrir a sequ&ecirc;ncia inicial?</span></h3>
+          <p class="c1"><span class="c3">Pegue a sequ&ecirc;ncia embaralhada e divida em duas partes iguais:</span></p>
+          <p class="c1 c26"><span class="c3">Sequ&ecirc;ncia embaralhada: 9, Valete, 8, Rei, 10, 7, &Agrave;s,
+              Rainha</span>
           </p>
-          <p>1: (2)<br />2: (Ace2, Ace3, Ace5, Ace6, Ace7, Ace8)<br />3: (2), (Ace1)<br />4: (Ace2, Ace1, Ace3, Ace5,
-            Ace6,
-            Ace7, Ace8)</p>
-          <p>1: (2)<br />2: (Ace1, Ace2, Ace3, Ace5, Ace6, Ace7, Ace8)<br />3: (4), (Ace4)<br />4: (Ace1, Ace2, Ace3,
-            Ace4,
-            Ace5, Ace6, Ace7, Ace8); Done :)</p>
-          <p>Some notes:<br />- You can do the process with other amount of items;<br />- You can use a even number
-            instead
-            an odd;<br />- You can do the process until be possible to remove and change the values or until you
-            went;<br />- If you intent to have different sizes for Part 1 and Part 2 you need to keep this in mind when
-            you
-            do the reverse process.</p>
-          <p>I hope you get the basic idea. (:</p>
-          <p>The BreakMe use a set of 24 binaries (24bits) data to cipher a simple text.<br />Each group of 24bits is
-            cipher
-            with a different key.<br />The ciphered text is encode to Base64. Enter with a Base64 text do be decipher.
+          <p class="c1 c4"><span class="c3">Parte 1: 9, Valete, 8, Rei</span></p>
+          <p class="c1 c4"><span class="c3">Parte 2: 10, 7, &Agrave;s, Rainha</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Agora use os n&uacute;meros das posi&ccedil;&otilde;es removidas e trocadas
+              para
+              conseguir a sequ&ecirc;ncia inicial:</span></p>
+          <p class="c1 c4"><span class="c3">Posi&ccedil;&otilde;es das cartas removidas: 4, 2, 6, 1</span></p>
+          <p class="c1 c4"><span class="c3">Posi&ccedil;&otilde;es trocadas: 2, 2, 4, 3</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Se no &uacute;ltimo passo para embaralhar voc&ecirc; trocou uma carta de uma
+              posi&ccedil;&atilde;o escolhida pela carta na primeira posi&ccedil;&atilde;o. Comece utilizando o
+              &uacute;ltimo n&uacute;mero na lista das posi&ccedil;&otilde;es trocadas e troque a carta na
+              posi&ccedil;&atilde;o correspondente pela a da primeira posi&ccedil;&atilde;o. Depois precisamos colocar
+              os
+              valores removidos novamente na lista, certo? Utilize as posi&ccedil;&otilde;es das cartas removidas e
+              insira
+              as cartas nas posi&ccedil;&otilde;es correspondentes. Os n&uacute;meros de posi&ccedil;&otilde;es
+              removidas
+              e trocadas devem ser usados na ordem inversa do que foram usados quando embaralhamos. Nesse exemplo basta
+              pegar os n&uacute;meros do &uacute;ltimo para o primeiro. Tente manter essa ordem, deixa as coisas mais
+              simples. Seguindo os passos:</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm;: Pegar o &uacute;ltimo valor na lista das posi&ccedil;&otilde;es
+              trocadas:
+              3</span></p>
+          <p class="c11"><span class="c3">2&ordm;: Trocar o valor na lista pelo primeiro:</span></p>
+          <p class="c11 c4"><span class="c3">Parte 1: 9, Valete, 8, Rei</span></p>
+          <p class="c11 c4"><span class="c3">Sequ&ecirc;ncia sendo desembaralhada: 8, Valete, 9, Rei</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c1"><span class="c17">Nota: A sequ&ecirc;ncia Parte 1 corresponde &agrave; Sequ&ecirc;ncia principal
+              onde
+              foi feito o processo para embaralhar ent&atilde;o &eacute; nela que deve ser aplicado os passo para
+              desembaralhar.</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">3&ordm; - Pegue o &uacute;ltimo valor na lista das posi&ccedil;&otilde;es
+              removidas:
+              1</span></p>
+          <p class="c1"><span class="c3">4&ordm; - Pegue o &uacute;ltimo valor na Parte 2 e coloque na
+              posi&ccedil;&atilde;o
+              correspondente:</span></p>
+          <p class="c1 c4"><span class="c3">Parte 2: 10, 7, &Agrave;s, Rainha</span></p>
+          <p class="c1 c4"><span class="c3">Sequ&ecirc;ncia sendo desembaralhada: Rainha, 8, Valete, 9, Rei</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Volte ao primeiro passo pegando os valores da lista de posi&ccedil;&otilde;es
+              das
+              cartas trocadas e removidas do &uacute;ltimo para o primeiro:</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm;: 4</span></p>
+          <p class="c11"><span class="c3">2&ordm;: Sequ&ecirc;ncia sendo desembaralhada: 9, 8, Valete, Rainha,
+              Rei</span></p>
+          <p class="c11"><span class="c3">3&ordm;: 6, carta &Aacute;s</span></p>
+          <p class="c11"><span class="c3">4&ordm;: Sequ&ecirc;ncia sendo desembaralhada: 9, 8, Valete, Rainha, Rei,
+              &Aacute;s</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm;: 2</span></p>
+          <p class="c11"><span class="c3">2&ordm;: Sequ&ecirc;ncia sendo desembaralhada: 8, 9, Valete, Rainha, Rei,
+              &Aacute;s</span></p>
+          <p class="c11"><span class="c3">3&ordm;: 2, carta 7</span></p>
+          <p class="c11"><span class="c3">4&ordm;: Sequ&ecirc;ncia sendo desembaralhada: 8, 7 ,9, Valete, Rainha, Rei,
+              &Aacute;s</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1&ordm;: 2</span></p>
+          <p class="c11"><span class="c3">2&ordm;: Sequ&ecirc;ncia sendo desembaralhada: 7, 8 ,9, Valete, Rainha, Rei,
+              &Aacute;s</span></p>
+          <p class="c11"><span class="c3">3&ordm;: 4, carta 10</span></p>
+          <p class="c11"><span class="c3">4&ordm;: Sequ&ecirc;ncia sendo desembaralhada: 7, 8 ,9, 10, Valete, Rainha,
+              Rei,
+              &Aacute;s</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">Essa &eacute; a ideia base implementada no Breakme para embaralhar os
+              dados!</span>
           </p>
+          <h2 class="c32" id="h.et0xu8rpoxw6"><span class="c18">Definindo a chave</span></h2>
+          <h3 class="c28" id="h.rkw3u4u41q1k"><span class="c3">Agora vamos ver as estrat&eacute;gias utilizadas para
+              gerar a
+              senha:</span></h3>
+          <p class="c1"><span class="c13">Por ora, temos que a senha para a sequ&ecirc;ncia 9, Valete, 8, Rei, 10, 7,
+              &Agrave;s, Rainha &eacute;: </span><span class="c13 c14">42612243</span><span class="c3">. Que s&atilde;o
+              as
+              posi&ccedil;&otilde;es das cartas removidas e trocadas. As cartas removidas que s&atilde;o
+              necess&aacute;rias para desembaralhar est&atilde;o juntas com o que restou da sequ&ecirc;ncia principal.
+              Ent&atilde;o tudo que voc&ecirc; precisa &eacute; a senha e a sequ&ecirc;ncia embaralhada.</span></p>
+          <p class="c1 c4"><span class="c29 c13 c14">Sequ&ecirc;ncia embaralhada: 9, Valete, 8, Rei, 10, 7, &Agrave;s,
+              Rainha
+            </span></p>
+          <p class="c1 c4"><span class="c29 c13 c14">Senha: 42612243</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Uma vez definida a senha aleatoriamente utilizei a mesma para embaralhar as
+              cartas
+              novamente. No Breakme escolhi o 2 como sendo um valor razo&aacute;vel para a quantidade de vez que os bits
+              s&atilde;o embaralhados.</span></p>
+          <p class="c4 c30"><span class="c13 c14 c29">Sequ&ecirc;ncia embaralhada novamente com a mesma senha: 8, 10,
+              Valete,
+              &Agrave;s, Rei, 9, Rainha, 7</span></p>
+          <p class="c30 c4"><span class="c29 c13 c14">Senha: 42612243</span></p>
+          <p class="c1"><span class="c3">Nesse exemplo onde temos um grupo de 8 cartas termina aqui o processo. </span>
+          </p>
+          <h3 class="c28" id="h.lazvw18cipt"><span class="c3">Vamos pegar agora dois conjuntos de 8 cartas:</span></h3>
+          <p class="c1 c4"><span class="c3">Primeira sequ&ecirc;ncia: 7, 8, 9, 10, Valete, Rainha, Rei, &Agrave;s</span>
+          </p>
+          <p class="c1 c4"><span class="c3">Segunda sequ&ecirc;ncia: 7, 8, 9, 10, Valete, Rainha, Rei, &Agrave;s</span>
+          </p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Para a primeira sequ&ecirc;ncia vamos continuar com o que j&aacute; tinhamos:
+            </span>
+          </p>
+          <p class="c1 c4"><span class="c5">Sequ&ecirc;ncia embaralhada duas vezes: 8, 10, Valete, &Aacute;s, Rei, 9,
+              Rainha,
+              7</span></p>
+          <p class="c1 c4"><span class="c5">Senha: 42612243</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c13">Para embaralhar a segunda sequ&ecirc;ncia a mesma senha deve ser utilizada.
+              Mas
+              antes &eacute; preciso somar o n&uacute;mero 1 a cada um dos n&uacute;meros da senha. Se o n&uacute;mero
+              obtido for maior que 8. &Eacute; s&oacute; diminuir o n&uacute;mero por 8. Nossa nova senha: 4 + 1, 2 + 1,
+              6
+              + 1, 1 + 1, 2 + 1, &nbsp;2 + 1, 4 + 1, 3 + 1 &gt; </span><span class="c13 c37">53723354</span><span
+              class="c3">.</span></p>
+          <p class="c1 c16"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">O n&uacute;mero 1 &eacute; o que utilizo nos passos do Breakme. O n&uacute;mero
+              de
+              passos pode ser outro que voc&ecirc; escolher sendo fixo ou vari&aacute;vel. Voc&ecirc; pode, por exemplo,
+              utilizar um n&uacute;mero qualquer obtido atrav&eacute;s da senha ou calcular um n&uacute;mero novo a
+              partir
+              de algum dado que seja poss&iacute;vel obter com a senha ou a sequ&ecirc;ncia. </span></p>
+          <p class="c1"><span class="c13">Escolhi somar &agrave; senha os valores de uma data em milissegundos. Uma
+              determinada data tem o valor </span><span class="c13 c37">1575028800255</span><span class="c3">&nbsp;em
+              milissegundos. Pegue cada um dos valores e fa&ccedil;a o mesmo processo de somar como foi feito com o
+              n&uacute;mero 1:</span></p>
+          <p class="c1"><span class="c13">Separe de um em um: </span><span class="c13 c37">1575028800255</span><span
+              class="c3">. </span></p>
+          <p class="c1"><span class="c3">Fica como mostra na lista abaixo, aproveite e some os n&uacute;mero &agrave;
+              senha,
+              utilize a senha onde j&aacute; adicionamos o 1:</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">1: 5 + 1, 3 + 1, 7 + 1, 2 + 1, 3 + 1, 3 + 1, 5 + 1, 4 + 1 &gt; 64834465</span>
+          </p>
+          <p class="c11"><span class="c3">5: 6 + 5, 4 + 5, 8 + 5, 3 + 5, 4 + 5, 4 + 5, 6 + 5, 5 + 5 &gt; 31581132</span>
+          </p>
+          <p class="c11"><span class="c3">7: 3 + 7, 1 + 7, 5 + 7, 8 + 7, 1 + 7, 1 + 7, 3 + 7, 2 + 7 &gt; 28478821</span>
+          </p>
+          <p class="c11"><span class="c3">5: 2 + 5, 8 + 5, 4 + 5, 7 + 5, 8 + 5, 8 + 5, 2 + 5, 1 + 5 &gt; 75145576</span>
+          </p>
+          <p class="c11"><span class="c3">0: 75145576 &gt; 75145576</span></p>
+          <p class="c11"><span class="c3">2: 7 + 2, 5 + 2, 1 + 2, 4 + 2, 5 + 2, 5 + 2, 7 + 2, 6 + 2 &gt; 17367718</span>
+          </p>
+          <p class="c11"><span class="c3">8: 17367718 &gt; 17367718</span></p>
+          <p class="c11"><span class="c3">8: 17367718 &gt; 17367718</span></p>
+          <p class="c11"><span class="c3">0: 17367718 &gt; 17367718</span></p>
+          <p class="c11"><span class="c3">0: 17367718 &gt; 17367718</span></p>
+          <p class="c11"><span class="c3">2: 1 + 2, 7 + 2, 3 + 2, 6 + 2, 7 + 2, 7 + 2, 1 + 2, 8 + 2 &gt; 31581132</span>
+          </p>
+          <p class="c11"><span class="c3">5: 3 + 5, 1 + 5, 5 + 5, 8 + 5, 1 + 5, 1 + 5, 3 + 5, 2 + 5 &gt; 86256687</span>
+          </p>
+          <p class="c11"><span class="c3">5: 8 + 5, 6 + 5, 2 + 5, 5 + 5, 6 + 5, 6 + 5, 8 + 5, 7 + 5 &gt; 53723354</span>
+          </p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c13">Todo esse processo de somar um n&uacute;mero &agrave; senha &eacute; chamado
+              de
+            </span><span class="c13 c14">Roleta</span><span class="c3">.</span></p>
+          <p class="c1"><span class="c3">Antes de continuar precisamos de mais 4 cartas na segunda sequ&ecirc;ncia, pois
+              sen&atilde;o, acontecer&atilde;o casos onde a posi&ccedil;&atilde;o a ser trocada ou removida n&atilde;o
+              existir&aacute;. </span></p>
+          <p class="c8 c4"><span class="c2">Sequ&ecirc;ncia com 12 cartas: 3, 4, 5, 6, 7, 8, 9, 10, Valete, Rainha, Rei,
+              &Agrave;s</span></p>
+          <p class="c8 c4"><span class="c2">Senha: 53723354</span></p>
+          <p class="c10"><span class="c29 c27 c38"></span></p>
+          <p class="c8"><span class="c5">Embaralhado uma vez: 9, 5, 8, 6, 10, Rainha, Rei, &Agrave;s, 7, 3, Valete,
+              4</span>
+          </p>
+          <p class="c8"><span class="c5">Embaralhado a segunda vez: 6, 8, Rainha, Rei, &Agrave;s, 3, Valete, 4, 10, 9,
+              7,
+              5</span></p>
+          <p class="c8"><span class="c5">Primeira sequ&ecirc;ncia embaralhada: 8, 10, Valete, &Agrave;s, Rei, 9, Rainha,
+              7</span></p>
+          <p class="c8"><span class="c5">Segunda sequ&ecirc;ncia embaralhada: 6, 8, Rainha, Rei, &Agrave;s, 3, Valete,
+              4, 10,
+              9, 7, 5</span></p>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c1"><span class="c3">Para descobrir a senha da primeira sequ&ecirc;ncia &eacute; preciso descobrir
+              antes a
+              senha da segunda sequ&ecirc;ncia. Isso acaba criando uma cadeia onde cada conjunto de cartas ser&aacute;
+              embaralhado com uma senha diferente.</span></p>
+          <h3 class="c19" id="h.t1h90k1edjfg"><span class="c27">Alguns dados sobre o Breakme:</span></h3>
+          <ul class="c40 lst-kix_v26czl5ixtdf-0 start">
+            <li class="c1 c20 c4"><span class="c3">&Eacute; usado um conjunto de 24 bits (24 zeros e uns):
+                000100011110000111001000</span></li>
+            <li class="c1 c20 c4"><span class="c3">24 d&iacute;gitos para evitar o problema de n&atilde;o existir a
+                posi&ccedil;&atilde;o quando a senha passar na roleta e no final ter duas partes iguais, n&uacute;meros
+                removidos e sequ&ecirc;ncia principal.</span></li>
+            <li class="c1 c20 c4"><span class="c3">&Eacute; gerado um n&uacute;mero aleat&oacute;rio de 0 a 15 para ser
+                usado na senha. 0 a 15, pois a primeira posi&ccedil;&atilde;o &eacute; 0 e os n&uacute;mero na base
+                hexadecimal v&atilde;o at&eacute; F que &eacute; igual a 15 na base decimal.</span></li>
+            <li class="c1 c4 c20"><span class="c3">A senha &eacute; mostrada em hexadecimal, mas s&atilde;o usados os
+                n&uacute;meros da senha em decimal no algoritmo. A sa&iacute;da &eacute; convertida para base64 pois
+                fica mais amig&aacute;vel. </span></li>
+            <li class="c1 c20 c4"><span class="c13">O c&oacute;digo fonte est&aacute; no gitHub &gt;</span><span
+                class="c15 c13"><a class="c36"
+                  href="https://www.google.com/url?q=https://github.com/breakmecipher/breakme&amp;sa=D&amp;ust=1593655338461000&amp;usg=AOvVaw0V5J3unqoIwm0qn-3I7UNV">https://github.com/breakmecipher/breakme</a></span><span
+                class="c3">. Fork me!</span></li>
+          </ul>
+          <p class="c10"><span class="c3"></span></p>
+          <p class="c11"><span class="c3">Acredito que estejam claras as ideias b&aacute;sicas sobre como funciona o
+              Breakme!</span></p>
+          <p class="c11"><span class="c3">Ent&atilde;o, o desafio &eacute; o seguinte: Voc&ecirc; deve descobrir uma
+              forma de
+              conseguir a senha que n&atilde;o seja por For&ccedil;a Bruta (processo onde s&atilde;o tentadas todas as
+              senhas poss&iacute;veis at&eacute; se conseguir a correta). A primeira pessoa a conseguir isso descobrindo
+              como burlar o Breakme leva o pr&ecirc;mio! </span></p>
+
         </div>
       </div>
+    </div>
+  </section>
+  <!-- Contact Section-->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <!-- Contact Section Heading-->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contato</h2>
+      <!-- Icon Divider-->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+      <!-- Contact Section Form-->
 
-      <h1><a href="https://github.com/dandan0092/breakme">Fork me!</a></h1>
-
-
-
-
-
+      <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+      <div class="col-lg-12 ml-auto text-center">
+        <p><span class="fonttile">Em caso de qualquer d&uacute;vida ou se descobrir como burlar o Breakme
+            encaminhe
+            uma mensagem para o e-mail: </span><span class="fonttile"><a
+              href="mailto:breakmecipher@gmail.com">breakmecipher@gmail.com</a></span><span>.</span></p>
+        <p><span></span></p>
+        <p><span class="fonttile">Caso seja o primeiro a descobrir, o pr&ecirc;mio &eacute; seu! Manda
+            v&ecirc;
+            pessoal!</span></p>
+      </div>
 
     </div>
+  </section>
+
+  <!-- Copyright Section-->
+  <div class="copyright py-4 text-center text-white">
+    <div class="container"><small>Copyright © 2020</small></div>
+  </div>
